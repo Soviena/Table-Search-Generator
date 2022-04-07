@@ -32,7 +32,8 @@ def bfs(graph, node,x):
             if neighbour not in visited:
                 visited.append(neighbour)
                 queue.append(neighbour)
-        print(queue[0][6:],end="-")
+        if queue:
+            print(queue[0][6:],end="-")
     print(" ("+str(i)+" Tabel antara)")
 
 
@@ -64,8 +65,8 @@ akhir = input("Tujuan tabel (cth Tabel_9) : ")
 metode = input("Metode pencarian (bfs/dfs) : ")
 
 if metode == "bfs":
-    bfs(v, "Tabel_3", "Tabel_0")
+    bfs(v, asal, akhir)
 elif metode == "dfs":
-    dfs(v, "Tabel_3", "Tabel_0")
+    dfs(v, asal, akhir)
 else:
     print("Metode tidak ada !")
