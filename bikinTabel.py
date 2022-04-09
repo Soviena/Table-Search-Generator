@@ -61,5 +61,5 @@ def exportXlsx(fileName, listOfTable):
 N = int(input("Jumlah Tabel : "))
 exportTabel(N)
 table = buatTabelRelasi(N)
-# lihatRelasi(table) # Visualisasi bagaimana tabel berelasi dalam matrix ketetanggaan
+lihatRelasi(table) # Visualisasi bagaimana tabel berelasi dalam matrix ketetanggaan
 exportTabelRelasi(table)

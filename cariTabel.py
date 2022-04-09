@@ -34,7 +34,7 @@ def BFSearch(graf, v,x):
         else:
             i+=1
             print("Atribut_"+m[6:]+"_", end = "") 
-        for ttg in graph[m]:
+        for ttg in graf[m]:
             if ttg not in vis:
                 vis.append(ttg)
                 q.append(ttg)
