@@ -22,14 +22,7 @@ def exportTabel(N):
     listOfTable.append(["No.","Nama Tabel"])
     for i in range(0,N):
         listOfTable.append([i+1,"Tabel_"+str(i)])
-        # print("Tabel_"+str(i))
-    numberPy.savetxt("Tabel.csv", 
-            listOfTable,
-            delimiter =", ", 
-            fmt ='% s')
-    Table = Panda.read_csv (r'Tabel.csv')
-    Table.to_excel(r"Tabel.xlsx",index = None, header=True)
-    os.remove("Tabel.csv")
+    exportXlsx("Tabel", listOfTable)
 
 def lihatRelasi(listOfTable):
     x = N*5
@@ -54,16 +47,19 @@ def exportTabelRelasi(TabelRelasi):
     for i in TabelRelasi:
         temp.append([index,"Atribut_"+str(i[0]//5)+"_"+str(i[1]//5),"Tabel_"+str(i[0]//5),"Tabel_"+str(i[1]//5)])
         index+=1
-    numberPy.savetxt("Relasi.csv", 
-            temp,
+    exportXlsx("Relasi", temp)
+
+def exportXlsx(fileName, listOfTable):
+    numberPy.savetxt(fileName+".csv", 
+            listOfTable,
             delimiter =", ", 
             fmt ='% s')
-    excel = Panda.read_csv (r'Relasi.csv')
-    excel.to_excel(r"Relasi.xlsx",index = None, header=True)
-    os.remove("Relasi.csv")
+    excel = Panda.read_csv (fileName+".csv")
+    excel.to_excel(fileName+".xlsx",index = None, header=True)
+    os.remove(fileName+".csv")    
 
 N = int(input("Jumlah Tabel : "))
 exportTabel(N)
 table = buatTabelRelasi(N)
-# lihatRelasi(table)
+# lihatRelasi(table) # Visualisasi bagaimana tabel berelasi dalam matrix ketetanggaan
 exportTabelRelasi(table)
